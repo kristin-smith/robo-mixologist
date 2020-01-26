@@ -13,7 +13,7 @@ public class robomixologistConfiguration extends Configuration {
 
     @JsonProperty
     public String getTemplate(){
-        this.template = template;
+        return template;
     }
 
     @JsonProperty
