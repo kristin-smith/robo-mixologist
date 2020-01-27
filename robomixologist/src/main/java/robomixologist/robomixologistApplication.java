@@ -3,8 +3,8 @@ package robomixologist;
 import io.dropwizard.Application;
 import io.dropwizard.setup.Bootstrap;
 import io.dropwizard.setup.Environment;
-//import com.example.robomixologist.resources.robomixologist.Resource;
-//import com.example.robomixologist.health.TemplateHealthCheck;
+import robomixologist.resources.RobomixologistResource;
+import robomixologist.health.TemplateHealthCheck;
 
 public class robomixologistApplication extends Application<robomixologistConfiguration> {
 
@@ -26,7 +26,14 @@ public class robomixologistApplication extends Application<robomixologistConfigu
     @Override
     public void run(robomixologistConfiguration configuration,
                     Environment environment) {
-        // nothing to do yet
+        final RobomixologistResource resource = new RobomixologistResource(
+                configuration.getTemplate(),
+                configuration.getDefaultName()
+        );
+        final TemplateHealthCheck healthCheck =
+                new TemplateHealthCheck(configuration.getTemplate());
+        environment.healthChecks().register("template", healthCheck);
+        environment.jersey().register(resource);
     }
 
 }
