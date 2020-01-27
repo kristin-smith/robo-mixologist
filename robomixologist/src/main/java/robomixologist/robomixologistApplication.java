@@ -10,10 +10,9 @@ public class robomixologistApplication extends Application<robomixologistConfigu
 
     public static void main(String[] args) throws Exception {
         new robomixologistApplication().run(args);
-        System.out.println("main");
     }
 
-    @Override
+   /* @Override
     public String getName() {
         return "robomixologist";
     }
@@ -21,7 +20,7 @@ public class robomixologistApplication extends Application<robomixologistConfigu
     @Override
     public void initialize(Bootstrap<robomixologistConfiguration> bootstrap) {
         // nothing to do yet
-    }
+    }*/
 
     @Override
     public void run(robomixologistConfiguration configuration,
