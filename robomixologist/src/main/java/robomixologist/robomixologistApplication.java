@@ -26,11 +26,10 @@ public class robomixologistApplication extends Application<robomixologistConfigu
     public void run(robomixologistConfiguration configuration,
                     Environment environment) {
         final RobomixologistResource resource = new RobomixologistResource(
-                configuration.getTemplate(),
-                configuration.getDefaultName()
+                configuration.getDefaultMixer()
         );
         final TemplateHealthCheck healthCheck =
-                new TemplateHealthCheck(configuration.getTemplate());
+                new TemplateHealthCheck(configuration.getDefaultMixer());
         environment.healthChecks().register("template", healthCheck);
         environment.jersey().register(resource);
     }

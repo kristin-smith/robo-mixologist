@@ -1,6 +1,6 @@
 package robomixologist.resources;
 
-import robomixologist.api.Saying;
+import robomixologist.api.MixerSelection;
 import com.codahale.metrics.annotation.Timed;
 
 import javax.ws.rs.GET;
@@ -11,24 +11,22 @@ import javax.ws.rs.core.MediaType;
 import java.util.concurrent.atomic.AtomicLong;
 import java.util.Optional;
 
-@Path("/hello-world")
+@Path("/mixer")
 @Produces(MediaType.APPLICATION_JSON)
 
 public class RobomixologistResource {
-    private final String template;
-    private final String defaultName;
+    private final String defaultMixer;
     private final AtomicLong counter;
 
-    public RobomixologistResource (String template, String defaultName) {
-        this.template = template;
-        this.defaultName = defaultName;
+    public RobomixologistResource (String defaultMixer) {
+        this.defaultMixer = defaultMixer;
         this.counter = new AtomicLong();
     }
 
     @GET
     @Timed
-    public Saying sayHello(@QueryParam("name") Optional<String> name) {
-        final String value = String.format(template, name.orElse(defaultName));
-        return new Saying(counter.incrementAndGet(), value);
+    public MixerSelection sayHello(@QueryParam("mixer") Optional<String> mixer) {
+        final String value = String.format(mixer.orElse(defaultMixer));
+        return new MixerSelection(counter.incrementAndGet(), value);
     }
 }
