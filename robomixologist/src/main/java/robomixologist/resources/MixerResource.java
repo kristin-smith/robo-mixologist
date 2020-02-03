@@ -14,18 +14,18 @@ import java.util.Optional;
 @Path("/mixer")
 @Produces(MediaType.APPLICATION_JSON)
 
-public class RobomixologistResource {
+public class MixerResource {
     private final String defaultMixer;
     private final AtomicLong counter;
 
-    public RobomixologistResource (String defaultMixer) {
+    public MixerResource(String defaultMixer) {
         this.defaultMixer = defaultMixer;
         this.counter = new AtomicLong();
     }
 
     @GET
     @Timed
-    public MixerSelection sayHello(@QueryParam("mixer") Optional<String> mixer) {
+    public MixerSelection getMixer(@QueryParam("mixer") Optional<String> mixer) {
         final String value = String.format(mixer.orElse(defaultMixer));
         return new MixerSelection(counter.incrementAndGet(), value);
     }

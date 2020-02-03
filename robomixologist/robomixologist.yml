@@ -1,1 +1,8 @@
 defaultMixer: Seltzer
+juices:
+  - pomegranate
+  - passionfruit
+  - blackberry
+  - lime
+  - grapefruit
+  - lemon
